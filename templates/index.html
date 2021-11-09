@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Index page</h1>
+
+<h1>Home</h1>
+
+<h3>All blogs</h3>
+
+{% for blog in blogs %}
+
+<h4>{{blog.title}}</h4>
+<p>{{blog.text}}</p>
+
+{% endfor %}
+
 {% endblock %}
