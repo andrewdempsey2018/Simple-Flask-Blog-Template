@@ -11,6 +11,8 @@
 <h4>{{blog.title}}</h4>
 <p>{{blog.text}}</p>
 
+<a href="{{ url_for('dedicated', blogId=blog._id) }}">View in full</a>
+
 <a href="{{ url_for('edit', blogId=blog._id) }}">[edit]</a>
 <a href="{{ url_for('delete', blogId=blog._id) }}">[delete]</a>
 

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>view blog in full</h1>
+
+<h3>{{blog.title}}</h3>
+<h3>{{blog.text}}</h3>
+
+<a href="{{ url_for('index') }}">[back]</a>
+
+{% endblock %}

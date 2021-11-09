@@ -50,5 +50,11 @@ def edit_blog():
     })
     return redirect(url_for('index'))
 
+# a page for viewing a single blog on its own
+@app.route("/dedicated")
+def dedicated():
+    blogId = request.args.get('blogId', None)
+    return render_template("dedicated.html", blog=blogData.find_one({ '_id': ObjectId(blogId) }))
+
 if __name__ == '__main__':
     app.run(debug=True)
