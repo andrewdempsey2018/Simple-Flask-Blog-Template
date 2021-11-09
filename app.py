@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 
 import os
 
@@ -17,6 +18,18 @@ def index():
 @app.route("/create")
 def create():
     return render_template("create.html")
+
+@app.route("/delete")
+def delete():
+    blogId=request.args.get("blogId", None)
+    mongo.db.blogscoll.remove({ "_id": ObjectId(blogId) })
+    return redirect(url_for("index"))
+
+@app.route("/publish_blog", methods=["POST"])
+def publish_blog():
+    blogs=mongo.db.blogscoll
+    blogs.insert_one(request.form.to_dict())
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
